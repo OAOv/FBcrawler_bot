@@ -1,0 +1,12 @@
+[0513/140533.497:ERROR:file_io_win.cc(161)] CreateFile C:\Users\JIAYU_~1\AppData\Local\Temp\chromedp-runner326732483\Crashpad\settings.dat: ╰参тぃ﹚隔畖 (0x3)
+[0513/140533.498:ERROR:file_io_win.cc(170)] CreateFile C:\Users\JIAYU_~1\AppData\Local\Temp\chromedp-runner326732483\Crashpad\reports\e9e6af2d-31b7-4984-9ad9-9a25c6ef8f72.dmp: ╰参тぃ﹚隔畖 (0x3)
+[0513/140533.498:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
+[0513/141441.823:ERROR:file_io_win.cc(161)] CreateFile C:\Users\JIAYU_~1\AppData\Local\Temp\chromedp-runner494315939\Crashpad\settings.dat: ╰参тぃ﹚隔畖 (0x3)
+[0513/141441.824:ERROR:file_io_win.cc(170)] CreateFile C:\Users\JIAYU_~1\AppData\Local\Temp\chromedp-runner494315939\Crashpad\reports\eb2fd56c-f660-40ca-9696-c5d9380ef22b.dmp: ╰参тぃ﹚隔畖 (0x3)
+[0513/141441.824:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
+[0513/141632.613:ERROR:file_io_win.cc(161)] CreateFile C:\Users\JIAYU_~1\AppData\Local\Temp\chromedp-runner022004902\Crashpad\settings.dat: ╰参тぃ﹚隔畖 (0x3)
+[0513/141632.613:ERROR:file_io_win.cc(170)] CreateFile C:\Users\JIAYU_~1\AppData\Local\Temp\chromedp-runner022004902\Crashpad\reports\c5344ea7-4bad-4eb0-a1c6-79ae2197496a.dmp: ╰参тぃ﹚隔畖 (0x3)
+[0513/141632.613:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
+[0513/142049.903:ERROR:file_io_win.cc(161)] CreateFile C:\Users\JIAYU_~1\AppData\Local\Temp\chromedp-runner921470219\Crashpad\settings.dat: ╰参тぃ﹚隔畖 (0x3)
+[0513/142049.904:ERROR:file_io_win.cc(170)] CreateFile C:\Users\JIAYU_~1\AppData\Local\Temp\chromedp-runner921470219\Crashpad\reports\ad6a7fce-e2c1-4cb4-bc5c-bcb9e3ba1ecf.dmp: ╰参тぃ﹚隔畖 (0x3)
+[0513/142049.904:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
