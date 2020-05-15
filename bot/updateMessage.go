@@ -4,6 +4,7 @@ import (
 	"FBcrawler/api"
 	"FBcrawler/task"
 	"log"
+	"net/http"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
@@ -13,6 +14,7 @@ func UpdateMessage() {
 	u.Timeout = 60
 
 	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
+	go http.ListenAndServe("", nil)
 	/*updates, err := BotFB.GetUpdatesChan(u)
 	if err != nil {
 		log.Panic(err)
