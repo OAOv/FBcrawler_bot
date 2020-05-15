@@ -21,4 +21,6 @@ func ConnectBotAPI() {
 	if err != nil {
 		log.Panic(err)
 	}
+
+	UpdateMessage()
 }

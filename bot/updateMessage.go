@@ -5,18 +5,18 @@ import (
 	"FBcrawler/task"
 	"log"
 
-	"github.com/gin-gonic/gin"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
-func UpdateMessage(c *gin.Context) {
+func UpdateMessage() {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 60
 
-	updates, err := BotFB.GetUpdatesChan(u)
+	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
+	/*updates, err := BotFB.GetUpdatesChan(u)
 	if err != nil {
 		log.Panic(err)
-	}
+	}*/
 
 	for update := range updates {
 		isCommand := update.Message.IsCommand()
