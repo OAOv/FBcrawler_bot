@@ -6,13 +6,19 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
+var BotFB *tgbotapi.BotAPI
+var err error
+
 func ConnectBotAPI() {
-	bot, err := tgbotapi.NewBotAPI("917129105:AAGKp2PehTK4b9oEYY3ZR8fY_z2YVqs-qEU")
+	BotFB, err = tgbotapi.NewBotAPI("917129105:AAGKp2PehTK4b9oEYY3ZR8fY_z2YVqs-qEU")
 	if err != nil {
 		log.Panic(err)
 	}
-	bot.Debug = true
-	log.Printf("Authorized on account %s", bot.Self.UserName)
+	BotFB.Debug = true
+	log.Printf("Authorized on account %s", BotFB.Self.UserName)
 
-	UpdateMessage(bot)
+	_, err = BotFB.SetWebhook(tgbotapi.NewWebhook("https://fb-crawler-oaov.herokuapp.com/" + BotFB.Token))
+	if err != nil {
+		log.Panic(err)
+	}
 }

@@ -5,14 +5,15 @@ import (
 	"FBcrawler/task"
 	"log"
 
+	"github.com/gin-gonic/gin"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
-func UpdateMessage(bot *tgbotapi.BotAPI) {
+func UpdateMessage(c *gin.Context) {
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 60
 
-	updates, err := bot.GetUpdatesChan(u)
+	updates, err := BotFB.GetUpdatesChan(u)
 	if err != nil {
 		log.Panic(err)
 	}
@@ -26,7 +27,7 @@ func UpdateMessage(bot *tgbotapi.BotAPI) {
 
 			if Target == "NotFound" {
 				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Please enter correct command.")
-				if _, err := bot.Send(msg); err != nil {
+				if _, err := BotFB.Send(msg); err != nil {
 					log.Panic(err)
 				}
 				return
@@ -37,7 +38,7 @@ func UpdateMessage(bot *tgbotapi.BotAPI) {
 			for _, data := range *datas {
 				msg := tgbotapi.NewMessage(update.Message.Chat.ID, data.Title+"\n\n"+data.URL)
 
-				if _, err := bot.Send(msg); err != nil {
+				if _, err := BotFB.Send(msg); err != nil {
 					log.Panic(err)
 				}
 			}
@@ -45,13 +46,13 @@ func UpdateMessage(bot *tgbotapi.BotAPI) {
 			if update.Message.Text != "" {
 				msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
 
-				if _, err := bot.Send(msg); err != nil {
+				if _, err := BotFB.Send(msg); err != nil {
 					log.Panic(err)
 				}
 			} else {
 				smsg := tgbotapi.NewStickerShare(update.Message.Chat.ID, update.Message.Sticker.FileID)
 
-				if _, err := bot.Send(smsg); err != nil {
+				if _, err := BotFB.Send(smsg); err != nil {
 					log.Panic(err)
 				}
 			}
