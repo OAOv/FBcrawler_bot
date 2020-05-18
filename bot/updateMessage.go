@@ -2,11 +2,12 @@ package bot
 
 import (
 	"log"
+	"net/http"
 )
 
 func UpdateMessage() {
 	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
-	//go http.ListenAndServe("https://fb-crawler-oaov.herokuapp.com/hook", nil)
+	go http.ListenAndServe(":", nil)
 
 	/*
 		u := tgbotapi.NewUpdate(0)
