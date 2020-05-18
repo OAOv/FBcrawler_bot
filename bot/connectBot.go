@@ -17,7 +17,7 @@ func ConnectBotAPI() {
 	BotFB.Debug = true
 	log.Printf("Authorized on account %s", BotFB.Self.UserName)
 
-	BotFB.RemoveWebhook()
+	//BotFB.RemoveWebhook()
 
 	_, err = BotFB.SetWebhook(tgbotapi.NewWebhookWithCert("https://fb-crawler-oaov.herokuapp.com/hook", nil))
 	if err != nil {
