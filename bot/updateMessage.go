@@ -24,9 +24,8 @@ func UpdateMessage() {
 	*/
 
 	for update := range updates {
-		isCommand := update.Message.IsCommand()
-
 		log.Printf("111")
+		isCommand := update.Message.IsCommand()
 
 		if isCommand {
 			userInput := update.Message.Command()
