@@ -1,12 +1,8 @@
 package bot
 
 import (
-	"FBcrawler/api"
-	"FBcrawler/task"
 	"log"
 	"net/http"
-
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 func UpdateMessage() {
@@ -23,7 +19,9 @@ func UpdateMessage() {
 		}
 	*/
 
-	for update := range updates {
+	log.Println("%v", updates)
+
+	/*for update := range updates {
 		isCommand := update.Message.IsCommand()
 
 		if isCommand {
@@ -62,5 +60,5 @@ func UpdateMessage() {
 				}
 			}
 		}
-	}
+	}*/
 }
