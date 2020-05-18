@@ -13,7 +13,6 @@ func UpdateMessage() {
 	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
 	go http.ListenAndServe("https://fb-crawler-oaov.herokuapp.com/hook", nil)
 
-	log.Printf("111")
 	/*
 		u := tgbotapi.NewUpdate(0)
 		u.Timeout = 60
