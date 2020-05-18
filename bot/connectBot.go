@@ -19,7 +19,7 @@ func ConnectBotAPI() {
 
 	BotFB.RemoveWebhook()
 
-	_, err = BotFB.SetWebhook(tgbotapi.NewWebhook("https://fb-crawler-oaov.herokuapp.com/hook"))
+	_, err = BotFB.SetWebhook(tgbotapi.NewWebhook("https://fb-crawler-oaov.herokuapp.com/" + BotFB.Token))
 	if err != nil {
 		log.Panic(err)
 	}

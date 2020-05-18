@@ -2,12 +2,11 @@ package bot
 
 import (
 	"log"
-	"net/http"
 )
 
 func UpdateMessage() {
 	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
-	go http.ListenAndServe("https://fb-crawler-oaov.herokuapp.com/hook", nil)
+	//go http.ListenAndServe("https://fb-crawler-oaov.herokuapp.com/hook", nil)
 
 	/*
 		u := tgbotapi.NewUpdate(0)
@@ -19,10 +18,9 @@ func UpdateMessage() {
 		}
 	*/
 
-	log.Println("%v", updates)
-
-	/*for update := range updates {
-		isCommand := update.Message.IsCommand()
+	for update := range updates {
+		log.Printf("%+v\n", update)
+		/*isCommand := update.Message.IsCommand()
 
 		if isCommand {
 			userInput := update.Message.Command()
@@ -59,6 +57,6 @@ func UpdateMessage() {
 					log.Panic(err)
 				}
 			}
-		}
-	}*/
+		}*/
+	}
 }
