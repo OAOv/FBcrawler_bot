@@ -23,6 +23,8 @@ func UpdateMessage() {
 		}
 	*/
 
+	log.Printf("111")
+
 	for update := range updates {
 		isCommand := update.Message.IsCommand()
 
