@@ -10,15 +10,18 @@ import (
 )
 
 func UpdateMessage() {
-	u := tgbotapi.NewUpdate(0)
-	u.Timeout = 60
-
 	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
 	go http.ListenAndServe("https://fb-crawler-oaov.herokuapp.com/hook", nil)
-	/*updates, err := BotFB.GetUpdatesChan(u)
-	if err != nil {
-		log.Panic(err)
-	}*/
+
+	/*
+		u := tgbotapi.NewUpdate(0)
+		u.Timeout = 60
+
+		updates, err := BotFB.GetUpdatesChan(u)
+		if err != nil {
+			log.Panic(err)
+		}
+	*/
 
 	for update := range updates {
 		isCommand := update.Message.IsCommand()
