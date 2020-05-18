@@ -7,7 +7,7 @@ import (
 
 func UpdateMessage() {
 	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
-	go http.ListenAndServe("0.0.0.0:5000", nil)
+	go http.ListenAndServe("localhost:8443", nil)
 
 	/*
 		u := tgbotapi.NewUpdate(0)
