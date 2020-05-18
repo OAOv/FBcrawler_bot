@@ -3,12 +3,15 @@ package bot
 import (
 	"log"
 	"net/http"
+	"os"
+	"strconv"
 )
 
 func UpdateMessage() {
-	//port := os.Getenv("PORT")
+	port, _ := strconv.Atoi(os.Getenv("PORT"))
+	port = 80 | port
 	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
-	go http.ListenAndServe("0.0.0.0:80", nil)
+	go http.ListenAndServe("0.0.0.0:"+strconv.Itoa(port), nil)
 
 	/*
 		u := tgbotapi.NewUpdate(0)
