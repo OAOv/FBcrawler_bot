@@ -24,5 +24,11 @@ func ConnectBotAPI() {
 		log.Panic(err)
 	}
 
+	info, err := BotFB.GetWebhookInfo()
+	if err != nil {
+		log.Panicln(err)
+	}
+	log.Println(info.LastErrorMessage, info.LastErrorDate)
+
 	UpdateMessage()
 }
