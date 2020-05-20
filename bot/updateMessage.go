@@ -52,8 +52,9 @@ func UpdateMessage() {
 			}
 		} else {
 			if update.Message.Text != "" {
-				msg.ChatID = update.Message.Chat.ID
-				msg.Text = update.Message.Text
+				msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
+				//msg.ChatID = update.Message.Chat.ID
+				//msg.Text = update.Message.Text
 
 				if _, err := BotFB.Send(msg); err != nil {
 					log.Panic(err)
