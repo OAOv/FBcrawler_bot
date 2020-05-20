@@ -6,7 +6,7 @@ import (
 )
 
 func UpdateMessage() {
-	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
+	updates := BotFB.ListenForWebhook("//" + BotFB.Token)
 	go http.ListenAndServe("0.0.0.0:80", nil)
 
 	/*
