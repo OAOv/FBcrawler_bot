@@ -19,16 +19,18 @@ func ConnectBotAPI() {
 
 	BotFB.RemoveWebhook()
 
-	_, err = BotFB.SetWebhook(tgbotapi.NewWebhook("https://fb-crawler-oaov.herokuapp.com/" + BotFB.Token))
+	_, err = BotFB.SetWebhook(tgbotapi.NewWebhookWithCert("https://fb-crawler-oaov.herokuapp.com/"+BotFB.Token, nil))
 	if err != nil {
 		log.Panic(err)
 	}
 
 	info, err := BotFB.GetWebhookInfo()
 	if err != nil {
-		log.Panicln(err)
+		log.Fatal(err)
 	}
-	log.Println(info.LastErrorMessage, info.LastErrorDate)
+	if info.LastErrorDate != 0 {
+		log.Printf("[Telegram callback failed]%s", info.LastErrorMessage)
+	}
 
 	UpdateMessage()
 }

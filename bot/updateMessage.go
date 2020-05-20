@@ -1,13 +1,18 @@
 package bot
 
 import (
+	"FBcrawler/api"
+	"FBcrawler/task"
 	"log"
 	"net/http"
+	"os"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
 func UpdateMessage() {
-	updates := BotFB.ListenForWebhook("//" + BotFB.Token)
-	go http.ListenAndServe("0.0.0.0:80", nil)
+	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
+	go http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 
 	/*
 		u := tgbotapi.NewUpdate(0)
@@ -20,15 +25,16 @@ func UpdateMessage() {
 	*/
 
 	for update := range updates {
-		log.Printf("%+v\n", update)
-		/*isCommand := update.Message.IsCommand()
+		isCommand := update.Message.IsCommand()
+		var msg tgbotapi.MessageConfig
 
 		if isCommand {
 			userInput := update.Message.Command()
 			Target := task.GetTarget(userInput)
 
 			if Target == "NotFound" {
-				msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Please enter correct command.")
+				msg.ChatID = update.Message.Chat.ID
+				msg.Text = "Please enter correct command."
 				if _, err := BotFB.Send(msg); err != nil {
 					log.Panic(err)
 				}
@@ -38,15 +44,16 @@ func UpdateMessage() {
 			datas := api.Crawler(Target)
 
 			for _, data := range *datas {
-				msg := tgbotapi.NewMessage(update.Message.Chat.ID, data.Title+"\n\n"+data.URL)
-
+				msg.ChatID = update.Message.Chat.ID
+				msg.Text = data.Title + "\n\n" + data.URL
 				if _, err := BotFB.Send(msg); err != nil {
 					log.Panic(err)
 				}
 			}
 		} else {
 			if update.Message.Text != "" {
-				msg := tgbotapi.NewMessage(update.Message.Chat.ID, update.Message.Text)
+				msg.ChatID = update.Message.Chat.ID
+				msg.Text = update.Message.Text
 
 				if _, err := BotFB.Send(msg); err != nil {
 					log.Panic(err)
@@ -58,6 +65,6 @@ func UpdateMessage() {
 					log.Panic(err)
 				}
 			}
-		}*/
+		}
 	}
 }
