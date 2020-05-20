@@ -16,7 +16,6 @@ var targetURL string
 func (fbc *FacebookCrawler) Do(keyword string, records *[]*types.Record) {
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
 		chromedp.Flag("headless", true),
-		chromedp.Flag("window-size", "1920,1080"),
 	)
 
 	allocator, cancel := chromedp.NewExecAllocator(context.Background(), opts...)
