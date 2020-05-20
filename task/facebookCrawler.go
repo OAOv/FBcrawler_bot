@@ -6,6 +6,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/chromedp"
 )
 
@@ -55,7 +56,7 @@ func (fbc *FacebookCrawler) getTitle(keyword string, record *[3]types.Record) ch
 					}
 				}()
 			}
-		})
+		}),
 		chromedp.Text(`//*[@id="pagelet_timeline_main_column"]/div/div[2]/div/div[1]/div/div/div/div/div[1]/div[3]/div[2]`, &record[0].Title),
 		chromedp.AttributeValue(`//*[@id="pagelet_timeline_main_column"]/div/div[2]/div/div[1]/div/div/div/div/div[1]/div[3]/div[1]/div/div/div[2]/div/div/div[2]/div/span[1]/span/a`, "href", &record[0].URL, &ok),
 		chromedp.Text(`//*[@id="pagelet_timeline_main_column"]/div/div[2]/div/div[2]/div/div/div/div/div[1]/div[3]/div[2]`, &record[1].Title),
