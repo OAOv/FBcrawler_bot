@@ -45,16 +45,14 @@ func (fbc *FacebookCrawler) Do(keyword string, records *[]*types.Record) {
 
 func (fbc *FacebookCrawler) getTitle(keyword string, record *[3]types.Record) chromedp.Tasks {
 	var ok bool
+	ctx, cancel := chromedp.NewContext(context.Background())
+
 	return chromedp.Tasks{
 		chromedp.Navigate(targetURL),
 		chromedp.Sleep(3 * time.Second),
 		chromedp.ListenTarget(ctx, func(ev interface{}) {
 			if _, ok := ev.(*page.EventJavascriptDialogOpening); ok {
 				t := page.HandleJavaScriptDialog(true)
-				go func() {
-					if err := chromedp.Run(ctx, t); err != nil {
-					}
-				}()
 			}
 		}),
 		chromedp.Text(`//*[@id="pagelet_timeline_main_column"]/div/div[2]/div/div[1]/div/div/div/div/div[1]/div[3]/div[2]`, &record[0].Title),
