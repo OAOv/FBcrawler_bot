@@ -15,7 +15,7 @@ var targetURL string
 
 func (fbc *FacebookCrawler) Do(keyword string, records *[]*types.Record) {
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
-		chromedp.ExecPath("system/app/Chrome/Chrome.apk"),
+		chromedp.ExecPath("/mnt/asec/com.android.chrome/chrome.apk"),
 		chromedp.Flag("headless", true),
 		chromedp.Flag("disable-popup-blocking", true),
 	)
