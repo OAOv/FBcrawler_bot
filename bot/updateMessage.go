@@ -11,6 +11,7 @@ import (
 )
 
 func UpdateMessage() {
+
 	updates := BotFB.ListenForWebhook("/" + BotFB.Token)
 	go http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 

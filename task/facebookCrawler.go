@@ -15,7 +15,7 @@ var targetURL string
 
 func (fbc *FacebookCrawler) Do(keyword string, records *[]*types.Record) {
 	opts := append(chromedp.DefaultExecAllocatorOptions[:],
-		chromedp.Flag("headless", true),
+		chromedp.Flag("headless", false),
 		chromedp.Flag("disable-popup-blocking", true),
 	)
 
@@ -46,7 +46,6 @@ func (fbc *FacebookCrawler) getTitle(keyword string, record *[3]types.Record) ch
 	var ok bool
 	return chromedp.Tasks{
 		chromedp.Navigate(targetURL),
-		chromedp.Sleep(3 * time.Second),
 		chromedp.Sleep(3 * time.Second),
 		chromedp.Click(`//*[@id="expanding_cta_close_button"]`),
 		chromedp.Text(`//*[@id="pagelet_timeline_main_column"]/div/div[2]/div/div[1]/div/div/div/div/div[1]/div[3]/div[2]`, &record[0].Title),
